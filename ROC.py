@@ -100,8 +100,8 @@ def update_slider(attrname, old, new):
     d = confusion_matrix(probabilities, y_test, threshold/100.)
 
     confusion_matrix_source.data = dict(
-            pred_Y=['TP = '+str(d["TP"]),'FP = '+str(d["FP"])],
-            pred_N=['FN = '+str(d["FN"]),'TN = '+str(d["TN"])],
+            pred_Y=['TP = '+str(d["TP"]),'FP = '+str(d["FP"]), 'SUM = '+str(d["FP"]+d["TP"])],
+            pred_N=['FN = '+str(d["FN"]),'TN = '+str(d["TN"]), 'SUM = '+str(d["FN"]+d["TN"])],
         )
 
     ROC_dot_source.data = dict(x=[d["FP"]/float(d["TN"]+d["FP"])], y=[d["TP"]/float(d["TP"]+d["FN"])])
@@ -160,8 +160,8 @@ p1.circle(x='x', y='y', size=10, fill_color='red', source=ROC_dot_source)
 
 # CONFUSION MATRIX
 data = dict(
-        pred_Y=['TP = '+str(d["TP"]),'FP = '+str(d["FP"])],
-        pred_N=['FN = '+str(d["FN"]),'TN = '+str(d["TN"])],
+        pred_Y=['TP = '+str(d["TP"]),'FP = '+str(d["FP"]), 'SUM = '+str(d["FP"]+d["TP"])],
+        pred_N=['FN = '+str(d["FN"]),'TN = '+str(d["TN"]), 'SUM = '+str(d["FN"]+d["TN"])],
     )
 
 confusion_matrix_source = ColumnDataSource(data)

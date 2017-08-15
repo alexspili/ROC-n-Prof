@@ -153,7 +153,6 @@ p1.yaxis.axis_label = 'Sensitivity = TP/(TP+FN)'
 TPrate, FPrate = roc_curve(probabilities, y_test)
 ROC_line_source = ColumnDataSource(data=dict(x=FPrate, y=TPrate))
 p1.line(x='x', y='y', source=ROC_line_source, color="#2222aa", line_width=1)
-ROC_line_source.data = dict(x=FPrate, y=TPrate)
 
 ROC_dot_source = ColumnDataSource(data=dict(x=[d["FP"]/float(d["TN"]+d["FP"])], y=[d["TP"]/float(d["TP"]+d["FN"])]) )
 p1.circle(x='x', y='y', size=10, fill_color='red', source=ROC_dot_source)
@@ -185,10 +184,8 @@ profit_dot_source = ColumnDataSource(data=dict(x=[threshold_init], y=[get_profit
 p2.circle(x='x', y='y', size=10, fill_color='red', source=profit_dot_source)
 
 # WIDGETS CALLBACKS
-text_TP.on_change('value', update_profit_textboxes)
-text_FP.on_change('value', update_profit_textboxes)
-text_TN.on_change('value', update_profit_textboxes)
-text_FN.on_change('value', update_profit_textboxes)
+for textBox in [text_TP, text_FP, text_TN, text_FN]:
+    textBox.on_change('value', update_profit_textboxes)
 
 slider_threshold.on_change('value', update_slider)
 

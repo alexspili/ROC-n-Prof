@@ -6,4 +6,4 @@ To view this, click [here] or download ROC.py and loanf.csv and run `bokeh serve
 [![ROC and profit curves](https://github.com/alexspili/ROC-n-Prof/blob/master/Screenshot.png "ROC and profit curves")][here]
 
 
-[here]: http://34.212.227.255:5006
+[here]: http://alexspiliotopoulos.com/aws/ROC
